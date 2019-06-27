@@ -29,7 +29,7 @@ This repository is organized as follows:
 	* [TDMS](./DATASET/TDMS): TDMs are extracted from _NORMALIZE\_MM\_REPRESENTATION_.
 
 ## Acronym
-The name AURORA has a nice connotation. Aurora is northern lights where there are distinctive bands of moving, colorful lights, which somehow imply separate metamodel categories. Furthermore, in Italian aurora means "the light of a new day."
+The name AURORA has a nice connotation. Aurora is northern lights where there are distinctive bands of moving, colorful lights, which somehow resemble separate metamodel categories. Furthermore, in Italian aurora means "the light of a new day."
 
 
 ## Disclaimer
