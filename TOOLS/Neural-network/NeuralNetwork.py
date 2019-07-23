@@ -6,6 +6,10 @@ network.py
 By Michael Nielsen
 https://github.com/mnielsen/neural-networks-and-deep-learning.git
 
+and
+Python Machine Learning Tutorial
+https://www.python-course.eu/neural_network_mnist.php
+
 """
 
 import numpy as np
