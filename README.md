@@ -10,7 +10,7 @@ Phuong T. Nguyen, Juri Di Rocco, Davide Di Ruscio, Alfonso Pierantonio<sup>(1)</
 
 <sup>(2)</sup> Gran Sasso Science Institute, Italy
 
-
+A pre-print version of the paper is available [here](https://github.com/MDEGroup/AURORA/blob/master/MODELS2019.pdf).
 
 ## Introduction
 
