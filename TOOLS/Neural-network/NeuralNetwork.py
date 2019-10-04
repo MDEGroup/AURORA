@@ -3,7 +3,7 @@ This modul has been built mainly based on the following source code
 
 network.py
 
-By Michael Nielsen
+Copyright (c) 2012-2018 Michael Nielsen
 https://github.com/mnielsen/neural-networks-and-deep-learning.git
 
 and
