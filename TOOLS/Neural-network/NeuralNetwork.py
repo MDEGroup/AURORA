@@ -1,13 +1,13 @@
 """
 This modul has been built mainly based on the following source code
 
-network.py
-
+1. network.py
 Copyright (c) 2012-2018 Michael Nielsen
 https://github.com/mnielsen/neural-networks-and-deep-learning.git
 
 and
-Python Machine Learning Tutorial
+
+2. Python Machine Learning Tutorial
 https://www.python-course.eu/neural_network_mnist.php
 
 """
@@ -22,7 +22,7 @@ def sigmoid(input):
     output = 1/(1+np.exp(-input))
     return output   
 
-# compute derivate
+# compute the derivate of sigmoid function
 def sigmoid_derivative(input):    
     return sigmoid(input)*(1-sigmoid(input))
 
@@ -32,17 +32,17 @@ class Network(object):
     # root: the directory that contains the source code
     # e_accuracy: the expected classification accuracy you want to obtain, e.g., 0.9 
     # num_layers: the number of layers for the network
-    # sizes: the size of each layer
+    # layers: the size of each layer
     # biases
     # weights
-    def __init__(self, path, expected_accuracy, sizes):
+    def __init__(self, path, expected_accuracy, layers):
         self.root = path
         self.e_accuracy = expected_accuracy
-        self.num_layers = len(sizes)
-        self.sizes = sizes
-        self.biases = [np.random.randn(y, 1) for y in sizes[1:]]
+        self.num_layers = len(layers)
+        self.layers = layers
+        self.biases = [np.random.randn(y, 1) for y in layers[1:]]
         self.weights = [np.random.randn(y, x)
-                        for x, y in zip(sizes[:-1], sizes[1:])]
+                        for x, y in zip(layers[:-1], layers[1:])]
 
     # compute the corresponding output, given an input a
     def feedforward(self, a):        
@@ -79,12 +79,12 @@ class Network(object):
             #number of true positives
             num_of_TP = sum(int(x == y) for (x, y) in classification_results)
 
-            #success rate
-            success_rate = float(num_of_TP)/num_of_testing_items
+            #accuracy: the ratio of number of correctly classified items to the total number of items in the test set
+            accuracy = float(num_of_TP)/num_of_testing_items
 
-            if success_rate > max :
-                max = success_rate
-                print "Found a better success rate {0}".format(success_rate)
+            if accuracy > max :
+                max = accuracy
+                print "Found a better accuracy {0}".format(accuracy)
                 #save the weights, parameters to external files if a better accuracy has been reached
                 self.save(self.root)
             e = e+1
@@ -126,7 +126,7 @@ class Network(object):
             activation = sigmoid(z)
             activations.append(activation)
         # backward pass
-        error = self.error(activations[-1], y) * \
+        error = self.calculate_error(activations[-1], y) * \
             sigmoid_derivative(zs[-1])
         synapse_b[-1] = error
         synapse_w[-1] = np.dot(error, activations[-2].transpose())
@@ -155,30 +155,30 @@ class Network(object):
      
 
     # error between the predicted labels and the real labels
-    def error(self, output_activations, y):
+    def calculate_error(self, output_activations, y):
         """Return the vector of partial derivatives \partial C_x /
         \partial a for the output activations."""
         return (output_activations-y)
 
     
-    # save all weights and biases to files 
+    # save all weights and biases to external files 
     def save(self,path):
         np.save(path+'/saved_num_layers.npy', self.num_layers)
-        np.save(path+'/saved_sizes.npy', self.sizes)
+        np.save(path+'/saved_layers.npy', self.layers)
         np.save(path+'/saved_weights.npy', self.weights)
         np.save(path+'/saved_biases.npy', self.biases)
         pass
     
-    # load neural network weights and biases from files
+    # load neural network weights and biases from external files
     def load(self,path):
         self.num_layers = np.load(path+'/saved_num_layers.npy')
-        self.sizes = np.load(path+'/saved_sizes.npy')
+        self.layers = np.load(path+'/saved_layers.npy')
         self.weights = np.load(path+'/saved_weights.npy')
         self.biases = np.load(path+'/saved_biases.npy')
         pass
 
 
-    # save classification results to an external file
+    # save classification results to an external file, i.e., Results.csv
     def saveResults(self, path, results):
         mat = np.matrix(results)
         dataframe = pd.DataFrame(data=mat.astype(float))
