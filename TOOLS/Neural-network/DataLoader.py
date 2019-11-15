@@ -10,7 +10,7 @@ def load_data(path, num_of_inputs, num_of_categories):
     training_inputs = [np.reshape(x, (num_of_inputs, 1)) for x in tr_d]
     raw_data = open(path+'/training_labels.csv', 'rt')
     tr_l = np.loadtxt(raw_data, delimiter=",")
-    training_labels = [vectorization(y,num_of_categories) for y in tr_l]
+    training_labels = [one_hot_vector(y,num_of_categories) for y in tr_l]
     training_data = zip(training_inputs, training_labels)
     """==============read testing data=============="""
     raw_data = open(path+'/testing_data.csv', 'rt')
@@ -23,7 +23,7 @@ def load_data(path, num_of_inputs, num_of_categories):
 
     return (training_data, testing_data)
 
-def vectorization(j,num_of_categories):    
+def one_hot_vector(j,num_of_categories):    
     e = np.zeros((num_of_categories, 1))
     e[int(j)] = 1.0
     return e
