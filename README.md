@@ -36,3 +36,24 @@ The name AURORA has a nice connotation. Aurora is northern lights where there ar
 
 The following [dataset](http://doi.org/10.5281/zenodo.2585431) has been exploited in our evaluation. However, we do not redistribute data from there. We only mine it to produce metadata that can be used as input for AURORA.
 
+
+## How to cite
+If you find our work useful for your research, please cite the paper using the following BibTex entry:
+
+```
+@INPROCEEDINGS{8906979,
+	author={P. T. {Nguyen} and J. {Di Rocco} and D. {Di Ruscio} and A. {Pierantonio} and L. {Iovino}},
+	booktitle={2019 ACM/IEEE 22nd International Conference on Model Driven Engineering Languages and Systems (MODELS)},
+	title={Automated Classification of Metamodel Repositories: A Machine Learning Approach},
+	year={2019},
+	volume={},
+	number={},
+	pages={272-282},
+	keywords={Machine learning;metamodel repositories;metamodel classification},
+	doi={10.1109/MODELS.2019.00011},
+	ISSN={null},
+	month={Sep.},}
+
+```
+
+
